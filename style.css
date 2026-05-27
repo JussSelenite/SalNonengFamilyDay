@@ -27,16 +27,15 @@ hr {
 }
 
 .row {
-    display: -ms-flexbox; /* IE10 */
+    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     padding: 0 4px;
 }
 
-/* Create four equal columns that sits next to each other */
 .column {
-    -ms-flex: 25%; /* IE10 */
+    -ms-flex: 25%;
     flex: 25%;
     max-width: 25%;
     padding: 0 4px;
@@ -47,29 +46,25 @@ hr {
     margin-top: 8px;
     vertical-align: middle;
     width: 100%;
-    
-    /* ADD THIS - Border for each photo */
     border: 2px solid var(--border-color);
-    border-radius: 8px;  /* Rounded corners - optional, remove if you want sharp edges */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;  /* Smooth hover effect */
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Optional: Add hover effect for photos */
 .column img:hover {
-    transform: scale(1.02);  /* Slight zoom on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Soft shadow */
-    border-color: var(--accent-color);  /* Changes border color on hover */
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-color);
 }
 
-/* Center content styling */
 .center-content {
     text-align: center;
     font-family: "Courier New", monospace;
     color: var(--main-color);
 }
 
-/* Modal background */
+/* MODAL - SIMPLE & CLEAN */
 .modal {
     display: none;
     position: fixed;
@@ -79,23 +74,18 @@ hr {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-    cursor: pointer;
-    overflow-y: auto;  /* Enables scrolling for landscape */
 }
 
-/* Modal content */
 .modal-content {
     background-color: var(--bg-color);
-    margin: 10% auto;
-    padding: 15px;
-    width: 90%;
-    max-width: 500px;
+    margin: 15% auto;
+    padding: 20px;
+    width: 85%;
+    max-width: 450px;
     border-radius: 10px;
     text-align: center;
     border: 3px solid var(--main-color);
     position: relative;
-    max-height: 90vh;  /* Prevents overflow */
-    overflow-y: auto;  /* Scroll inside modal if needed */
 }
 
 .modal-content img {
@@ -110,6 +100,7 @@ hr {
     font-size: 16px;
     color: var(--main-color);
     font-family: "Trebuchet MS", Verdana, sans-serif;
+    margin: 10px 0;
 }
 
 .close {
@@ -117,7 +108,7 @@ hr {
     position: absolute;
     right: 15px;
     top: 5px;
-    font-size: 32px;
+    font-size: 30px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -126,7 +117,7 @@ hr {
     color: var(--accent-color);
 }
 
-/* Footer styling */
+/* FOOTER */
 footer {
     text-align: center;
     padding: 20px;
@@ -156,132 +147,46 @@ footer hr {
     margin: 20px auto;
 }
 
-/* Landscape mode fix */
-@media screen and (max-width: 900px) and (orientation: landscape) {
-    .modal-content {
-        margin: 2% auto;
-        width: 70%;
-        max-width: 650px;
-        max-height: 85vh;
-        padding: 10px 15px;
-    }
-    
-    .modal-content img {
-        max-width: 50%;
-        float: left;
-        margin-right: 15px;
-        margin-bottom: 0;
-    }
-    
-    .modal-content p {
-        text-align: left;
-        overflow-y: auto;
-        max-height: 70vh;
-    }
-    
-    .close {
-        position: absolute;
-        right: 10px;
-        top: 0px;
-    }
-    
-    small {
-        clear: both;
-        display: block;
-        padding-top: 10px;
-    }
+.clickable-img {
+    cursor: pointer;
+    transition: transform 0.1s ease;
 }
 
-/* Small phones landscape */
-@media screen and (max-width: 600px) and (orientation: landscape) {
-    .modal-content {
-        width: 85%;
-        padding: 8px 12px;
-    }
-    
-    .modal-content img {
-        max-width: 40%;
-    }
-    
-    .modal-content p {
-        font-size: 12px;
-    }
+.clickable-img:active {
+    transform: scale(0.98);
 }
 
-@media screen and (max-width: 900px) and (orientation: landscape) {
-    .modal-content {
-        margin: 5% auto;
-        width: 80%;
-        padding: 15px;
-    }
-    
-    .modal-content img {
-        max-width: 40%;
-        display: inline-block;
-    }
-    
-    .modal-content p {
-        display: inline-block;
-        width: 55%;
-        vertical-align: middle;
-        margin-left: 10px;
-    }
-}
+/* ============================================ */
+/* RESPONSIVE BREAKPOINTS - CLEAN & SIMPLE */
+/* ============================================ */
 
-/* Responsive layout - makes a two column-layout instead of four columns */
+/* Tablet: 2 columns */
 @media screen and (max-width: 800px) {
     .column {
-        -ms-flex: 25%;
-        flex: 25%;
-        max-width: 25%;
-    }
-
-    
-}
-
-/* Handle landscape orientation on phones */
-@media screen and (max-width: 800px) and (orientation: landscape) {
-    .modal-content {
-        margin: 5% auto;
-        width: 80%;
-        max-width: 600px;
-        padding: 10px;
-    }
-    
-    .modal-content img {
-        max-width: 60%;
-        max-height: 50vh;
-    }
-    
-    .modal-content p {
-        font-size: 14px;
-        margin: 5px 0;
-    }
-    
-    .modal {
-        overflow-y: auto;  /* Allows scrolling if needed */
+        flex: 50%;
+        max-width: 50%;
     }
 }
 
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+/* Mobile portrait: 1 column */
 @media screen and (max-width: 600px) {
     .column {
-        -ms-flex: 100%;
         flex: 100%;
         max-width: 100%;
     }
-
+    
     body {
-        font-size: 16px;  /* Prevents zooming on iOS */
+        font-size: 16px;
     }
     
     .caption {
         font-size: 14px;
     }
-
+    
+    /* Footer mobile */
     footer {
         padding: 15px 10px;
-        font-size: 16px;  /* Bigger text! */
+        font-size: 16px;
     }
     
     .contact-info {
@@ -293,7 +198,7 @@ footer hr {
     .contact-info a {
         padding: 10px;
         display: block;
-        font-size: 16px;  /* Bigger link text */
+        font-size: 16px;
     }
     
     footer hr {
@@ -301,16 +206,15 @@ footer hr {
     }
     
     footer p {
-        font-size: 16px;  /* Bigger paragraph text */
+        font-size: 16px;
         margin: 8px 0;
     }
-}
-
-@media screen and (max-width: 480px) {
+    
+    /* Modal mobile portrait */
     .modal-content {
-        width: 95%;
+        width: 90%;
         margin: 30% auto;
-        padding: 12px;
+        padding: 15px;
     }
     
     .modal-content p {
@@ -324,11 +228,44 @@ footer hr {
     }
 }
 
-.clickable-img {
-    cursor: pointer;
-    transition: transform 0.1s ease;
+/* Mobile landscape: SIMPLE FIX */
+@media screen and (max-width: 900px) and (orientation: landscape) {
+    .modal-content {
+        width: 60%;
+        margin: 5% auto;
+        padding: 12px;
+    }
+    
+    .modal-content img {
+        max-width: 50%;
+        margin-right: 15px;
+        margin-bottom: 0;
+        float: left;
+    }
+    
+    .modal-content p {
+        font-size: 14px;
+        text-align: left;
+        overflow: hidden;
+    }
+    
+    .modal-content {
+        overflow: auto;
+    }
 }
 
-.clickable-img:active {
-    transform: scale(0.98);  /* Gives visual feedback on tap */
+/* Small phone landscape */
+@media screen and (max-width: 600px) and (orientation: landscape) {
+    .modal-content {
+        width: 75%;
+        margin: 3% auto;
+    }
+    
+    .modal-content img {
+        max-width: 40%;
+    }
+    
+    .modal-content p {
+        font-size: 12px;
+    }
 }
