@@ -256,6 +256,11 @@ footer hr {
         width: 80%;
     }
 
+    footer p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
     .modal-content {
         padding: 15px;
     }
@@ -267,4 +272,33 @@ footer hr {
     .close {
         font-size: 28px;
     }
+}
+
+@media screen and (orientation: landscape) and (max-height: 500px) {
+
+    .modal-content {
+        max-width: 90%;
+        max-height: 85vh;
+
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .modal-content img {
+        width: 45%;
+        max-height: 70vh;
+
+        margin-bottom: 0;
+    }
+
+    .modal-content p {
+        width: 55%;
+        font-size: 14px;
+        text-align: left;
+    }
+}
+
+footer p {
+    font-size: 16px;
 }
