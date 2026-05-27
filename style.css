@@ -80,12 +80,13 @@ hr {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     cursor: pointer;
+    overflow-y: auto;  /* Enables scrolling for landscape */
 }
 
 /* Modal content */
 .modal-content {
     background-color: var(--bg-color);
-    margin: 15% auto;
+    margin: 10% auto;
     padding: 15px;
     width: 90%;
     max-width: 500px;
@@ -93,6 +94,8 @@ hr {
     text-align: center;
     border: 3px solid var(--main-color);
     position: relative;
+    max-height: 90vh;  /* Prevents overflow */
+    overflow-y: auto;  /* Scroll inside modal if needed */
 }
 
 .modal-content img {
@@ -153,12 +156,110 @@ footer hr {
     margin: 20px auto;
 }
 
+/* Landscape mode fix */
+@media screen and (max-width: 900px) and (orientation: landscape) {
+    .modal-content {
+        margin: 2% auto;
+        width: 70%;
+        max-width: 650px;
+        max-height: 85vh;
+        padding: 10px 15px;
+    }
+    
+    .modal-content img {
+        max-width: 50%;
+        float: left;
+        margin-right: 15px;
+        margin-bottom: 0;
+    }
+    
+    .modal-content p {
+        text-align: left;
+        overflow-y: auto;
+        max-height: 70vh;
+    }
+    
+    .close {
+        position: absolute;
+        right: 10px;
+        top: 0px;
+    }
+    
+    small {
+        clear: both;
+        display: block;
+        padding-top: 10px;
+    }
+}
+
+/* Small phones landscape */
+@media screen and (max-width: 600px) and (orientation: landscape) {
+    .modal-content {
+        width: 85%;
+        padding: 8px 12px;
+    }
+    
+    .modal-content img {
+        max-width: 40%;
+    }
+    
+    .modal-content p {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 900px) and (orientation: landscape) {
+    .modal-content {
+        margin: 5% auto;
+        width: 80%;
+        padding: 15px;
+    }
+    
+    .modal-content img {
+        max-width: 40%;
+        display: inline-block;
+    }
+    
+    .modal-content p {
+        display: inline-block;
+        width: 55%;
+        vertical-align: middle;
+        margin-left: 10px;
+    }
+}
+
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 800px) {
     .column {
         -ms-flex: 25%;
         flex: 25%;
         max-width: 25%;
+    }
+
+    
+}
+
+/* Handle landscape orientation on phones */
+@media screen and (max-width: 800px) and (orientation: landscape) {
+    .modal-content {
+        margin: 5% auto;
+        width: 80%;
+        max-width: 600px;
+        padding: 10px;
+    }
+    
+    .modal-content img {
+        max-width: 60%;
+        max-height: 50vh;
+    }
+    
+    .modal-content p {
+        font-size: 14px;
+        margin: 5px 0;
+    }
+    
+    .modal {
+        overflow-y: auto;  /* Allows scrolling if needed */
     }
 }
 
