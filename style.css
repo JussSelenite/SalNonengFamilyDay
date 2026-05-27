@@ -3,8 +3,11 @@
 }
 
 :root {
-    --main-color: tomato;
-    --bg-color: #faebd7;
+    --main-color: #3d5a80;      /* Soft navy blue text */
+    --bg-color: #f0f4f8;        /* Cloud white-blue background */
+    --footer-bg: #d8e2e9;       /* Light seafoam footer */
+    --accent-color: #6c9ebf;    /* Gentle sky blue for accents */
+    --border-color: #c8d9e6;    /* Soft border for photos */
 }
 
 body {
@@ -40,16 +43,110 @@ hr {
 }
 
 .column img {
+    cursor: pointer;
     margin-top: 8px;
     vertical-align: middle;
     width: 100%;
+    
+    /* ADD THIS - Border for each photo */
+    border: 2px solid var(--border-color);
+    border-radius: 8px;  /* Rounded corners - optional, remove if you want sharp edges */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;  /* Smooth hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Center content styling (replaces <center> and <font> tags) */
+/* Optional: Add hover effect for photos */
+.column img:hover {
+    transform: scale(1.02);  /* Slight zoom on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Soft shadow */
+    border-color: var(--accent-color);  /* Changes border color on hover */
+}
+
+/* Center content styling */
 .center-content {
     text-align: center;
     font-family: "Courier New", monospace;
     color: var(--main-color);
+}
+
+/* Modal background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+/* Modal content */
+.modal-content {
+    background-color: var(--bg-color);
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    border: 3px solid var(--main-color);
+}
+
+.modal-content img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    font-size: 18px;
+    color: var(--main-color);
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+}
+
+.close {
+    color: var(--main-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: var(--accent-color);
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: var(--footer-bg);
+    border-top: 3px solid var(--main-color);
+}
+
+.contact-info {
+    margin: 15px 0;
+}
+
+.contact-info a {
+    color: var(--main-color);
+    text-decoration: none;
+    padding: 5px;
+    display: inline-block;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+    color: var(--accent-color);
+}
+
+footer hr {
+    width: 50%;
+    margin: 20px auto;
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
@@ -67,5 +164,13 @@ hr {
         -ms-flex: 100%;
         flex: 100%;
         max-width: 100%;
+    }
+
+    body {
+        font-size: 16px;  /* Prevents zooming on iOS */
+    }
+    
+    .caption {
+        font-size: 14px;
     }
 }
