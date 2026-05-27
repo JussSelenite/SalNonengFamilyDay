@@ -85,32 +85,36 @@ hr {
 /* Modal content */
 .modal-content {
     background-color: var(--bg-color);
-    margin: 10% auto;
-    padding: 20px;
-    width: 80%;
+    margin: 15% auto;
+    padding: 15px;
+    width: 90%;
     max-width: 500px;
     border-radius: 10px;
     text-align: center;
     border: 3px solid var(--main-color);
+    position: relative;
 }
 
 .modal-content img {
     width: 100%;
-    max-width: 300px;
+    max-width: 100%;
+    height: auto;
     border-radius: 8px;
     margin-bottom: 15px;
 }
 
 .modal-content p {
-    font-size: 18px;
+    font-size: 16px;
     color: var(--main-color);
     font-family: "Trebuchet MS", Verdana, sans-serif;
 }
 
 .close {
     color: var(--main-color);
-    float: right;
-    font-size: 28px;
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    font-size: 32px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -173,4 +177,57 @@ footer hr {
     .caption {
         font-size: 14px;
     }
+
+    footer {
+        padding: 15px 10px;
+        font-size: 16px;  /* Bigger text! */
+    }
+    
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .contact-info a {
+        padding: 10px;
+        display: block;
+        font-size: 16px;  /* Bigger link text */
+    }
+    
+    footer hr {
+        width: 80%;
+    }
+    
+    footer p {
+        font-size: 16px;  /* Bigger paragraph text */
+        margin: 8px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .modal-content {
+        width: 95%;
+        margin: 30% auto;
+        padding: 12px;
+    }
+    
+    .modal-content p {
+        font-size: 14px;
+    }
+    
+    .close {
+        font-size: 28px;
+        right: 12px;
+        top: 2px;
+    }
+}
+
+.clickable-img {
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.clickable-img:active {
+    transform: scale(0.98);  /* Gives visual feedback on tap */
 }
