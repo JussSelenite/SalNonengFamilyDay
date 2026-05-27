@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     for (var i = 0; i < images.length; i++) {
     images[i].onclick = function() {
-        modal.style.display = "block";
+        modal.style.display = "flex";
         modalImg.src = this.src;
         modalDesc.innerHTML = this.getAttribute("data-desc");
     }

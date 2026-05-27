@@ -3,12 +3,16 @@
 }
 
 :root {
-    --main-color: #3d5a80;      /* Soft navy blue text */
-    --bg-color: #f0f4f8;        /* Cloud white-blue background */
-    --footer-bg: #d8e2e9;       /* Light seafoam footer */
-    --accent-color: #6c9ebf;    /* Gentle sky blue for accents */
-    --border-color: #c8d9e6;    /* Soft border for photos */
+    --main-color: #3d5a80;
+    --bg-color: #f0f4f8;
+    --footer-bg: #d8e2e9;
+    --accent-color: #6c9ebf;
+    --border-color: #c8d9e6;
 }
+
+/* =========================
+   BODY
+========================= */
 
 body {
     margin: 0;
@@ -26,103 +30,159 @@ hr {
     padding: 32px;
 }
 
-.row {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    padding: 0 4px;
-}
-
-.column {
-    -ms-flex: 25%;
-    flex: 25%;
-    max-width: 25%;
-    padding: 0 4px;
-}
-
-.column img {
-    cursor: pointer;
-    margin-top: 8px;
-    vertical-align: middle;
-    width: 100%;
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.column img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-color: var(--accent-color);
-}
-
 .center-content {
     text-align: center;
     font-family: "Courier New", monospace;
     color: var(--main-color);
 }
 
-/* MODAL - SIMPLE & CLEAN */
+/* =========================
+   GALLERY LAYOUT
+========================= */
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+.column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+}
+
+.column img {
+    width: 100%;
+    margin-top: 8px;
+
+    cursor: pointer;
+    vertical-align: middle;
+
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease,
+                border-color 0.2s ease;
+
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.column img:hover {
+    transform: scale(1.02);
+    border-color: var(--accent-color);
+
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.clickable-img:active {
+    transform: scale(0.98);
+}
+
+/* =========================
+   MODAL
+========================= */
+
 .modal {
     display: none;
+
     position: fixed;
     z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+
+    inset: 0;
+
+    background-color: rgba(0,0,0,0.8);
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px;
 }
 
 .modal-content {
     background-color: var(--bg-color);
-    margin: 15% auto;
-    padding: 20px;
-    width: 85%;
-    max-width: 450px;
-    border-radius: 10px;
-    text-align: center;
+
+    width: 100%;
+    max-width: 500px;
+
+    max-height: 90vh;
+    overflow-y: auto;
+
+    border-radius: 12px;
     border: 3px solid var(--main-color);
+
+    padding: 20px;
+
     position: relative;
+
+    animation: popup 0.2s ease;
 }
 
 .modal-content img {
     width: 100%;
-    max-width: 100%;
     height: auto;
+
+    max-height: 65vh;
+    object-fit: contain;
+
     border-radius: 8px;
+
     margin-bottom: 15px;
 }
 
 .modal-content p {
     font-size: 16px;
-    color: var(--main-color);
-    font-family: "Trebuchet MS", Verdana, sans-serif;
-    margin: 10px 0;
+    line-height: 1.5;
+
+    margin: 0;
 }
 
 .close {
-    color: var(--main-color);
     position: absolute;
+
+    top: 8px;
     right: 15px;
-    top: 5px;
+
     font-size: 30px;
     font-weight: bold;
+
     cursor: pointer;
+
+    color: var(--main-color);
 }
 
 .close:hover {
     color: var(--accent-color);
 }
 
-/* FOOTER */
+/* popup animation */
+
+@keyframes popup {
+
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* =========================
+   FOOTER
+========================= */
+
 footer {
     text-align: center;
+
     padding: 20px;
     margin-top: 40px;
+
     background-color: var(--footer-bg);
+
     border-top: 3px solid var(--main-color);
 }
 
@@ -132,8 +192,11 @@ footer {
 
 .contact-info a {
     color: var(--main-color);
+
     text-decoration: none;
+
     padding: 5px;
+
     display: inline-block;
 }
 
@@ -147,125 +210,61 @@ footer hr {
     margin: 20px auto;
 }
 
-.clickable-img {
-    cursor: pointer;
-    transition: transform 0.1s ease;
-}
+/* =========================
+   RESPONSIVE
+========================= */
 
-.clickable-img:active {
-    transform: scale(0.98);
-}
+/* Tablet */
 
-/* ============================================ */
-/* RESPONSIVE BREAKPOINTS - CLEAN & SIMPLE */
-/* ============================================ */
-
-/* Tablet: 2 columns */
 @media screen and (max-width: 800px) {
+
     .column {
         flex: 50%;
         max-width: 50%;
     }
 }
 
-/* Mobile portrait: 1 column */
+/* Mobile */
+
 @media screen and (max-width: 600px) {
+
     .column {
         flex: 100%;
         max-width: 100%;
     }
-    
+
     body {
         font-size: 16px;
     }
-    
-    .caption {
-        font-size: 14px;
-    }
-    
-    /* Footer mobile */
+
     footer {
         padding: 15px 10px;
-        font-size: 16px;
     }
-    
+
     .contact-info {
         display: flex;
         flex-direction: column;
         gap: 8px;
     }
-    
+
     .contact-info a {
         padding: 10px;
-        display: block;
         font-size: 16px;
     }
-    
+
     footer hr {
         width: 80%;
     }
-    
-    footer p {
-        font-size: 16px;
-        margin: 8px 0;
-    }
-    
-    /* Modal mobile portrait */
+
     .modal-content {
-        width: 90%;
-        margin: 30% auto;
         padding: 15px;
     }
-    
+
     .modal-content p {
         font-size: 14px;
     }
-    
+
     .close {
         font-size: 28px;
-        right: 12px;
-        top: 2px;
-    }
-}
-
-/* Mobile landscape: SIMPLE FIX */
-@media screen and (max-width: 900px) and (orientation: landscape) {
-    .modal-content {
-        width: 60%;
-        margin: 5% auto;
-        padding: 12px;
-    }
-    
-    .modal-content img {
-        max-width: 50%;
-        margin-right: 15px;
-        margin-bottom: 0;
-        float: left;
-    }
-    
-    .modal-content p {
-        font-size: 14px;
-        text-align: left;
-        overflow: hidden;
-    }
-    
-    .modal-content {
-        overflow: auto;
-    }
-}
-
-/* Small phone landscape */
-@media screen and (max-width: 600px) and (orientation: landscape) {
-    .modal-content {
-        width: 75%;
-        margin: 3% auto;
-    }
-    
-    .modal-content img {
-        max-width: 40%;
-    }
-    
-    .modal-content p {
-        font-size: 12px;
     }
 }
