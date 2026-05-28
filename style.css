@@ -15,7 +15,7 @@
 ========================= */
 
 body {
-    margin: 0;
+    margin: 2%;
     font-family: "Trebuchet MS", Verdana, Georgia, sans-serif;
     color: var(--main-color);
     background-color: var(--bg-color);
